@@ -2,7 +2,9 @@
 using Contact.Application.Features.Commands.Contacts.AddKisi;
 using Contact.Application.Features.Commands.Contacts.AddKisiIletisim;
 using Contact.Application.Models.Contracts;
+using Contact.Application.Models.Rapors;
 using Contact.Domain.Entities.Contacts;
+using Contact.Domain.Entities.Rapors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,12 @@ namespace Contact.Application.Mappings
                .ReverseMap();
 
             CreateMap<KisiIletisimModel, KisiIletisim>().ReverseMap();
+
+            #endregion
+
+            #region Rapors
+
+            CreateMap<Rapor, RaporModel>().ReverseMap();
 
             #endregion
 
