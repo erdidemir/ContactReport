@@ -10,7 +10,7 @@ namespace Contact.Domain.Entities.Contacts
     public class KisiIletisim: EntityBase
     {
         public Guid Id { get; set; } 
-        public int KisiId { get; set; }
+        public Guid KisiId { get; set; }
         public int BilgiTipId { get; set; }
         public string Deger { get; set; }
 

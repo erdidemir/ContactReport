@@ -16,14 +16,9 @@ namespace Contact.Domain.Configurations.Contacts
             entity.ToTable("BilgiTip");
             entity.HasKey(p => p.Id);
 
-            entity.Property(x => x.Name).IsRequired();
+            entity.Property(x => x.Ad).IsRequired();
 
             #region ForeingKey
-
-            //entity.HasOne(d => d.BilgiTipType)
-            //       .WithMany(p => p.BilgiTips)
-            //       .HasForeignKey(d => d.BilgiTipTypeId)
-            //       .OnDelete(DeleteBehavior.ClientSetNull);
 
 
 
@@ -31,7 +26,7 @@ namespace Contact.Domain.Configurations.Contacts
 
             #region Index
 
-            entity.HasIndex(e => new { e.Name }, "IX_Name");
+            entity.HasIndex(e => new { e.Ad }, "IX_Ad");
 
             #endregion
 

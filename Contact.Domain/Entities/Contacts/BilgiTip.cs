@@ -15,7 +15,7 @@ namespace Contact.Domain.Entities.Contacts
         }
 
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Ad { get; set; }
 
         public virtual ICollection<KisiIletisim> KisiIletisims { get; set; }
 

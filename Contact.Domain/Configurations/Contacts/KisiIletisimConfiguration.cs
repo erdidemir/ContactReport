@@ -17,21 +17,21 @@ namespace Contact.Domain.Configurations.Contacts
             entity.HasKey(p => p.Id);
 
             entity.Property(x => x.KisiId).IsRequired();
-            entity.Property(x => x.BilgiTip).IsRequired();
+            entity.Property(x => x.BilgiTipId).IsRequired();
             entity.Property(x => x.Deger).IsRequired();
 
 
             #region ForeingKey
 
             entity.HasOne(d => d.Kisi)
-                   .WithMany(p => p.KisiIletisims)
-                   .HasForeignKey(d => d.KisiId)
-                   .OnDelete(DeleteBehavior.Restrict);
+                .WithMany(p => p.KisiIletisims)
+                .HasForeignKey(d => d.KisiId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
 
             entity.HasOne(d => d.BilgiTip)
-                 .WithMany(p => p.KisiIletisims)
-                 .HasForeignKey(d => d.BilgiTipId)
-                 .OnDelete(DeleteBehavior.Restrict);
+                   .WithMany(p => p.KisiIletisims)
+                   .HasForeignKey(d => d.BilgiTipId)
+                   .OnDelete(DeleteBehavior.ClientSetNull);
 
             #endregion
 
