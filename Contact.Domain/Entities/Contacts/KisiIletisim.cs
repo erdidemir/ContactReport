@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Contact.Domain.Entities.Commons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Domain.Entities.Contacts
 {
-    public class KisiIletisim
+    public class KisiIletisim: EntityBase
     {
         public Guid Id { get; set; } 
         public int KisiId { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Contact.Domain.Entities.Commons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Application.Contracts.Persistence.Repositories.Commons
 {
-    public interface IRepositoryBase<T> 
+    public interface IRepositoryBase<T> where T : EntityBase
     {
         #region Properties
 
