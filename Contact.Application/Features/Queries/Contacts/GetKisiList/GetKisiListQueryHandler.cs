@@ -13,17 +13,17 @@ namespace Contact.Application.Features.Queries.Contacts.GetKisiList
 {
     public class GetKisiListQueryHandler : IRequestHandler<GetKisiListQuery, IList<KisiModel>>
     {
-        private readonly IKisiRepository _KisiRepository;
+        private readonly IKisiRepository _kisiRepository;
         private readonly IMapper _mapper;
         public GetKisiListQueryHandler(IKisiRepository KisiRepository,
             IMapper mapper)
         {
-            _KisiRepository = KisiRepository;
+            _kisiRepository = KisiRepository;
             _mapper = mapper;
         }
         public async Task<IList<KisiModel>> Handle(GetKisiListQuery request, CancellationToken cancellationToken)
         {
-            var compaines = await _KisiRepository.GetAllAsync();
+            var compaines = await _kisiRepository.GetAllAsync();
 
             return _mapper.Map<IList<KisiModel>>(compaines);
         }

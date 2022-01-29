@@ -10,6 +10,6 @@ namespace Contact.Application.Contracts.Persistence.Repositories.Contracts
 {
     public interface IKisiIletisimRepository : IRepositoryBase<KisiIletisim>
     {
-
+        Task<IList<KisiIletisim>> GetKisiIletisimListByKisiId(Guid kisiId);
     }
 }

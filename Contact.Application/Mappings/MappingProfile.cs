@@ -26,6 +26,8 @@ namespace Contact.Application.Mappings
                .ForMember(dest => dest.BilgiTipAd, mo => mo.MapFrom(src => src.BilgiTip.Ad))
                .ReverseMap();
 
+            CreateMap<KisiIletisimModel, KisiIletisim>().ReverseMap();
+
             #endregion
 
 

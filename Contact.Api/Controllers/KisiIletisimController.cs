@@ -1,10 +1,14 @@
-﻿using Contact.Application.Features.Commands.Contacts.AddKisi;
-using Contact.Application.Features.Commands.Contacts.AddKisiIletisim;
-using Contact.Application.Features.Commands.Contacts.DeleteKisi;
+﻿using Contact.Application.Features.Commands.Contacts.AddKisiIletisim;
 using Contact.Application.Features.Commands.Contacts.DeleteKisiIletisim;
+using Contact.Application.Features.Queries.Contacts.GetKisiIletisimList;
+using Contact.Application.Features.Queries.Contacts.GetKisiList;
+using Contact.Application.Models.Contracts;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Contact.Api.Controllers
@@ -17,6 +21,15 @@ namespace Contact.Api.Controllers
         public KisiIletisimController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet("{kisiId}")]
+        public async Task<ActionResult<IList<KisiIletisimModel>>> GetKisiIletisimListByKisiId(Guid kisiId)
+        {
+            var query = new GetKisiIletisimListByKisiIdQuery(kisiId);
+
+            return Ok(await _mediator.Send(query));
+
         }
 
         [HttpPost]

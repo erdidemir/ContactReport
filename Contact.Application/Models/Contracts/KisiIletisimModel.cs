@@ -8,7 +8,7 @@ namespace Contact.Application.Models.Contracts
 {
     public class KisiIletisimModel
     {
-        public int KisiId { get; set; }
+        public Guid KisiId { get; set; }
         public string KisiAd { get; set; }
         public int BilgiTipId { get; set; }
         public string BilgiTipAd { get; set;}
