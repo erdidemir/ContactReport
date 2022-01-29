@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contact.Application.Features.Commands.Contacts.AddKisi;
 using Contact.Application.Features.Commands.Contacts.AddKisiIletisim;
+using Contact.Application.Features.Commands.Rapors.UpdateRapor;
 using Contact.Application.Models.Contracts;
 using Contact.Application.Models.Rapors;
 using Contact.Domain.Entities.Contacts;
@@ -35,6 +36,7 @@ namespace Contact.Application.Mappings
             #region Rapors
 
             CreateMap<Rapor, RaporModel>().ReverseMap();
+            CreateMap<Rapor, UpdateRaporCommand>().ReverseMap();
 
             #endregion
 

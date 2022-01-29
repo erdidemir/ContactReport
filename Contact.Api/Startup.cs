@@ -1,5 +1,7 @@
 using Contact.Application;
 using Contact.Infrastructure;
+using EventBus.Messages.Commons;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +32,26 @@ namespace Contact.Api
         {
             services.AddApplicationServices();
             services.AddInfrastructureService(Configuration);
+
+            // MassTransit-RabbitMQ Configuration
+            services.AddMassTransit(config => {
+
+                config.AddConsumer<RaporUpdateConsumer>();
+
+                config.UsingRabbitMq((ctx, cfg) => {
+                    cfg.Host(Configuration["EventBusSettings:HostAddress"]);
+
+                    cfg.ReceiveEndpoint(EventBusConstants.RaporUpdateQueue, c =>
+                    {
+                        c.ConfigureConsumer<RaporUpdateConsumer>(ctx);
+                    });
+                });
+            });
+            services.AddMassTransitHostedService();
+
+            // General Configuration
+            services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<RaporUpdateConsumer>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
