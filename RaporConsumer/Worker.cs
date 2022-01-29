@@ -1,3 +1,4 @@
+using EventBus.Messages.Commons;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
@@ -31,7 +32,7 @@ namespace RaporConsumer
             using (IModel channel = connection.CreateModel())
             {
                 EventingBasicConsumer consumer = new EventingBasicConsumer(channel);
-                channel.BasicConsume("rapor", false, consumer);
+                channel.BasicConsume(EventBusConstants.RaporCreateQueue, false, consumer);
                 consumer.Received += (sender, e) =>
                 {
                     //e.Body : Kuyruktaki mesajı verir.

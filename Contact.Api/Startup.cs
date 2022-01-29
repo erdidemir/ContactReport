@@ -1,3 +1,4 @@
+using Contact.Api.EventBusConsumer;
 using Contact.Application;
 using Contact.Infrastructure;
 using EventBus.Messages.Commons;
@@ -47,6 +48,7 @@ namespace Contact.Api
                     });
                 });
             });
+
             services.AddMassTransitHostedService();
 
             // General Configuration
