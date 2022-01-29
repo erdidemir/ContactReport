@@ -23,10 +23,6 @@ namespace Contact.Domain.Configurations.Contacts
 
             #region ForeingKey
 
-            //entity.HasOne(d => d.KisiType)
-            //       .WithMany(p => p.Kisis)
-            //       .HasForeignKey(d => d.KisiTypeId)
-            //       .OnDelete(DeleteBehavior.ClientSetNull);
 
 
 

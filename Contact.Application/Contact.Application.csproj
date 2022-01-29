@@ -5,12 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Contact.Domain\Contact.Domain.csproj" />
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Persistence\Contracts\" />
-    <Folder Include="Contracts\Persistence\Commons\" />
+    <ProjectReference Include="..\Contact.Domain\Contact.Domain.csproj" />
   </ItemGroup>
 
 </Project>

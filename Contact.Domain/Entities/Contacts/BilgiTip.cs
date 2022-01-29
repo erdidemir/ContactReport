@@ -8,7 +8,15 @@ namespace Contact.Domain.Entities.Contacts
 {
     public class BilgiTip
     {
-        public int Id { get; set; } 
-        public string Name { get; set; }    
+        public BilgiTip()
+        {
+            KisiIletisims = new HashSet<KisiIletisim>();
+        }
+
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public virtual ICollection<KisiIletisim> KisiIletisims { get; set; }
+
     }
 }

@@ -9,6 +9,10 @@ namespace Contact.Domain.Entities.Contacts
 {
     public class Kisi
     {
+        public Kisi()
+        {
+            KisiIletisims = new HashSet<KisiIletisim>();
+        }
         public Guid Id { get; set; }
 
         public string Ad { get; set; }
@@ -16,6 +20,8 @@ namespace Contact.Domain.Entities.Contacts
         public string Soyad { get; set; }
 
         public string Firma { get; set; }
+
+        public virtual ICollection<KisiIletisim> KisiIletisims { get; set; }
 
     }
 }
