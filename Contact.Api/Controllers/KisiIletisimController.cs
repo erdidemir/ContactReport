@@ -1,4 +1,5 @@
 ﻿using Contact.Application.Features.Commands.Contacts.AddKisi;
+using Contact.Application.Features.Commands.Contacts.AddKisiIletisim;
 using Contact.Application.Features.Commands.Contacts.DeleteKisi;
 using Contact.Application.Features.Commands.Contacts.DeleteKisiIletisim;
 using MediatR;
@@ -10,26 +11,26 @@ namespace Contact.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class KisiController : ControllerBase
+    public class KisiIletisimController : ControllerBase
     {
         public readonly IMediator _mediator;
-        public KisiController(IMediator mediator)
+        public KisiIletisimController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddKisi(AddKisiCommand addKisiCommand)
+        public async Task<IActionResult> AddKisiIletisim(AddKisiIletisimCommand addKisiIletisimCommand)
         {
-            var uuid = await _mediator.Send(addKisiCommand);
+            var uuid = await _mediator.Send(addKisiIletisimCommand);
 
             return Ok(uuid);
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteKisi(DeleteKisiIletisimCommand addKisiCommand)
+        public async Task<IActionResult> DeleteKisiIletisim(DeleteKisiIletisimCommand addKisiIletisimCommand)
         {
-             var unit = await _mediator.Send(addKisiCommand);
+            var unit = await _mediator.Send(addKisiIletisimCommand);
 
             return Ok();
         }

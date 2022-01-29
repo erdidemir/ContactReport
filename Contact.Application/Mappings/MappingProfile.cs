@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Contact.Application.Features.Commands.Contacts.AddKisi;
+using Contact.Application.Features.Commands.Contacts.AddKisiIletisim;
 using Contact.Application.Models.Contracts;
 using Contact.Domain.Entities.Contacts;
 using System;
@@ -18,6 +19,12 @@ namespace Contact.Application.Mappings
 
             CreateMap<Kisi, AddKisiCommand>().ReverseMap();
             CreateMap<Kisi, KisiModel>().ReverseMap();
+
+            CreateMap<KisiIletisim, AddKisiIletisimCommand>().ReverseMap();
+            CreateMap<KisiIletisim, KisiIletisimModel>()
+               .ForMember(dest => dest.KisiAd, mo => mo.MapFrom(src => src.Kisi.Ad))
+               .ForMember(dest => dest.BilgiTipAd, mo => mo.MapFrom(src => src.BilgiTip.Ad))
+               .ReverseMap();
 
             #endregion
 
