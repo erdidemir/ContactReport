@@ -1,4 +1,5 @@
 ﻿using Contact.Domain.Entities.Contacts;
+using Contact.Domain.Enums.Contacts;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,9 @@ namespace Contact.Infrastructure.Contracts.Persistence
             {
                 applicationContext.BilgiTip.AddRange(
                     new List<BilgiTip>() {
-                         new BilgiTip() { Ad = "elefon Numarası"},
-                         new BilgiTip() { Ad="E-mail Adresi"},
-                         new BilgiTip() { Ad="Konum" },
-
+                         new BilgiTip() { Ad = "Telefon Numarası", BilgiTipEnumId=(int)BilgiTipEnum.TelefonNumarasi},
+                         new BilgiTip() { Ad="E-mail Adresi" ,BilgiTipEnumId=(int)BilgiTipEnum.Email},
+                         new BilgiTip() { Ad="Konum", BilgiTipEnumId=(int)BilgiTipEnum.Konum },
                     }
                     );
 
