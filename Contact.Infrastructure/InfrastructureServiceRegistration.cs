@@ -1,8 +1,10 @@
 ﻿using Contact.Application.Contracts.Persistence.Repositories.Commons;
 using Contact.Application.Contracts.Persistence.Repositories.Contracts;
+using Contact.Application.Contracts.Persistence.Repositories.Rapors;
 using Contact.Infrastructure.Contracts.Persistence;
 using Contact.Infrastructure.Contracts.Persistence.Repositories.Commons;
 using Contact.Infrastructure.Contracts.Persistence.Repositories.Contracts;
+using Contact.Infrastructure.Contracts.Persistence.Repositories.Rapors;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +31,12 @@ namespace Contact.Infrastructure
             services.AddScoped<IKisiRepository, KisiRepository>();
             services.AddScoped<IBilgiTipRepository, BilgiTipRepository>();
             services.AddScoped<IKisiIletisimRepository, KisiIletisimRepository>();
+
+            #endregion
+
+            #region Rapors
+
+            services.AddScoped<IRaporRepository, RaporRepository>();
 
             #endregion
 
