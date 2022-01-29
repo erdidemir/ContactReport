@@ -94,6 +94,11 @@ namespace Contact.Infrastructure.Contracts.Persistence.Repositories.Commons
             return await _dbContext.Set<T>().FindAsync(id);
         }
 
+        public virtual async Task<T> GetByIdAsync(Guid id)
+        {
+            return await _dbContext.Set<T>().FindAsync(id);
+        }
+
         public virtual async Task<IEnumerable<T>> GetByIdsAsync(IEnumerable<int> ids)
         {
             return await _dbContext.Set<IEnumerable<T>>().FindAsync(ids);

@@ -1,4 +1,5 @@
 ﻿using Contact.Application.Features.Commands.Contacts.AddKisi;
+using Contact.Application.Features.Commands.Contacts.DeleteKisi;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,14 @@ namespace Contact.Api.Controllers
             var uuid = await _mediator.Send(addKisiCommand);
 
             return Ok(uuid);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteKisi(DeleteKisiCommand addKisiCommand)
+        {
+             var unit = await _mediator.Send(addKisiCommand);
+
+            return Ok();
         }
     }
 }
