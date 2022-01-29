@@ -18,7 +18,7 @@ namespace RaporConsumer
         private IModel _channel;
         private string _consumerTag;
 
-        public Worker(ILogger<Worker> logger)
+        public Worker()
         {
            
         }
@@ -36,7 +36,12 @@ namespace RaporConsumer
                 consumer.Received += (sender, e) =>
                 {
                     //e.Body : Kuyruktaki mesajý verir.
-                    Console.WriteLine(Encoding.UTF8.GetString(e.Body.ToArray()));
+                    var body = e.Body.ToArray();
+                    var jsonString = Encoding.UTF8.GetString(body);
+
+                    Console.WriteLine($"Json receievd as {jsonString}");
+
+                    Console.Read();
                 };
             }
             return Task.CompletedTask;

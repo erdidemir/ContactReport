@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Contact.Application.Contracts.Persistence.Repositories.Rapors;
 using Contact.Application.Features.Commands.Rapors.UpdateRapor;
 using EventBus.Messages.Events;
 using MassTransit;
@@ -11,28 +12,32 @@ namespace Contact.Api.EventBusConsumer
 {
     public class RaporUpdateConsumer : IConsumer<RaporUpdateEvent>
     {
-        private readonly IMediator _mediator;
-        private readonly IMapper _mapper;
-        private readonly ILogger<RaporUpdateConsumer> _logger;
+        //private readonly IMediator _mediator;
+        //private readonly IMapper _mapper;
 
-        public RaporUpdateConsumer(IMediator mediator, IMapper mapper, ILogger<RaporUpdateConsumer> logger)
+        //public RaporUpdateConsumer(IMediator mediator, IMapper mapper)
+        //{
+        //    _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        //    _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        //}
+
+        private readonly IRaporRepository _raporRepository;
+
+        public RaporUpdateConsumer(IRaporRepository raporRepository)
         {
-            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _raporRepository = raporRepository;
         }
 
         public async Task Consume(ConsumeContext<RaporUpdateEvent> context)
         {
             var message = context.Message;
 
-            UpdateRaporCommand updateRaporCommand = new UpdateRaporCommand();
-            updateRaporCommand.Id = message.RaporId;
-            updateRaporCommand.RaporUrl = message.RaporUrl;
+            var raporEntity = await _raporRepository.GetByIdAsync(message.RaporId);
 
-            await _mediator.Send(updateRaporCommand);
+            raporEntity.RaporUrl = message.RaporUrl;
 
-            _logger.LogInformation("Rapor updated successfully");
+            _raporRepository.UpdateAsync(raporEntity);
+
         }
     }
 }
