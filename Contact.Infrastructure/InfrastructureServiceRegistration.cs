@@ -24,7 +24,13 @@ namespace Contact.Infrastructure
 
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
 
+            #region Contracts
+
             services.AddScoped<IKisiRepository, KisiRepository>();
+            services.AddScoped<IBilgiTipRepository, BilgiTipRepository>();
+            services.AddScoped<IKisiIletisimRepository, KisiIletisimRepository>();
+
+            #endregion
 
             return services;
         }

@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using Contact.Application.Features.Commands.Contacts.AddKisi;
+using Contact.Application.Models.Contracts;
+using Contact.Domain.Entities.Contacts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +16,12 @@ namespace Contact.Application.Mappings
         {
             #region Contracts
 
+            CreateMap<Kisi, AddKisiCommand>().ReverseMap();
+            CreateMap<Kisi, KisiModel>().ReverseMap();
 
             #endregion
 
-         
+
         }
 
     }
