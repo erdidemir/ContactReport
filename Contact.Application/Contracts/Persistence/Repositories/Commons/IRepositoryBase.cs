@@ -38,6 +38,8 @@ namespace Contact.Application.Contracts.Persistence.Repositories.Commons
                                        bool disableTracking = true);
         Task<T> GetByIdAsync(int id);
 
+        Task<T> GetByIdAsync(Guid id);
+
         Task<IEnumerable<T>> GetByIdsAsync(IEnumerable<int> ids);
 
         Task<int> CountAsync();

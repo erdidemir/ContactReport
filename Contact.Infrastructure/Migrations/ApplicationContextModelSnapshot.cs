@@ -30,6 +30,9 @@ namespace Contact.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("BilgiTipEnumId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex(new[] { "Ad" }, "IX_Ad");
@@ -86,6 +89,26 @@ namespace Contact.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("KisiIletisim");
+                });
+
+            modelBuilder.Entity("Contact.Domain.Entities.Rapors.Rapor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("RaporDurumEnumId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("RaporUrl")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Tarih")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Rapor");
                 });
 
             modelBuilder.Entity("Contact.Domain.Entities.Contacts.KisiIletisim", b =>

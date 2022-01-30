@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Contact.Application.Features.Commands.Contacts.AddKisi
 {
-    public class AddKisiValidator : AbstractValidator<AddKisiCommand>
+    public class AddKisiCommandValidator : AbstractValidator<AddKisiCommand>
     {
-        public AddKisiValidator()
+        public AddKisiCommandValidator()
         {
             RuleFor(c => c.Ad).NotEmpty().WithMessage("{Ad Address} is required.");
             RuleFor(c => c.Firma).NotEmpty().WithMessage("{Firma} is required.");

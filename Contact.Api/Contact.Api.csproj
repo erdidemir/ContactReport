@@ -1,20 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.13">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.13">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+		<PackageReference Include="MassTransit" Version="7.1.6" />
+		<PackageReference Include="MassTransit.AspNetCore" Version="7.1.6" />
+		<PackageReference Include="MassTransit.RabbitMQ" Version="7.1.6" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Contact.Application\Contact.Application.csproj" />
-    <ProjectReference Include="..\Contact.Infrastructure\Contact.Infrastructure.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Contact.Application\Contact.Application.csproj" />
+		<ProjectReference Include="..\Contact.Infrastructure\Contact.Infrastructure.csproj" />
+		<ProjectReference Include="..\EventBus.Messages\EventBus.Messages.csproj" />
+	</ItemGroup>
 
 </Project>

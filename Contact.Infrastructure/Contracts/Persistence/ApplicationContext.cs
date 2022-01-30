@@ -1,5 +1,7 @@
 ﻿using Contact.Domain.Configurations.Contacts;
+using Contact.Domain.Configurations.Rapors;
 using Contact.Domain.Entities.Contacts;
+using Contact.Domain.Entities.Rapors;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -36,12 +38,18 @@ namespace Contact.Infrastructure.Contracts.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            #region Authentications
+            #region Contacts
 
             modelBuilder.ApplyConfiguration(new KisiConfiguration());
             modelBuilder.ApplyConfiguration(new BilgiTipConfiguration());
             modelBuilder.ApplyConfiguration(new KisiIletisimConfiguration());
-          
+
+            #endregion
+
+            #region Rapors
+
+            modelBuilder.ApplyConfiguration(new RaporConfiguration());
+
             #endregion
 
             foreach (var e in modelBuilder.Model.GetEntityTypes())
@@ -53,12 +61,18 @@ namespace Contact.Infrastructure.Contracts.Persistence
             }
         }
 
-        #region Authentications
+        #region Contacts
 
         public DbSet<Kisi> Kisi { get; set; }
         public DbSet<BilgiTip> BilgiTip { get; set; }
         public DbSet<KisiIletisim> KisiIletisim { get; set; }
-   
+
+
+        #endregion
+
+        #region Rapors
+
+        public DbSet<Rapor> Rapor { get; set; }
 
         #endregion
 
