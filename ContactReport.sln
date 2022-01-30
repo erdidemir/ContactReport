@@ -35,8 +35,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rapor.UnitTest", "Tests\Rap
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kisi", "Kisi", "{DF84FD35-4D4F-4F45-8605-5A5EB12F8519}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KisiUnitTest", "Tests\Kisi\KisiUnitTest\KisiUnitTest.csproj", "{43F26589-4038-4212-9B56-969A25D6824F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,10 +69,6 @@ Global
 		{CEBD0783-1C6E-4B83-9E69-246FC1D4326B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEBD0783-1C6E-4B83-9E69-246FC1D4326B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEBD0783-1C6E-4B83-9E69-246FC1D4326B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43F26589-4038-4212-9B56-969A25D6824F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43F26589-4038-4212-9B56-969A25D6824F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43F26589-4038-4212-9B56-969A25D6824F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43F26589-4038-4212-9B56-969A25D6824F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,7 +88,6 @@ Global
 		{8B8CB8F2-C40E-4900-9CB3-B5F6450E0485} = {8730141F-0564-4A7A-ACCC-3A5BE9FADEB4}
 		{CEBD0783-1C6E-4B83-9E69-246FC1D4326B} = {8B8CB8F2-C40E-4900-9CB3-B5F6450E0485}
 		{DF84FD35-4D4F-4F45-8605-5A5EB12F8519} = {8730141F-0564-4A7A-ACCC-3A5BE9FADEB4}
-		{43F26589-4038-4212-9B56-969A25D6824F} = {DF84FD35-4D4F-4F45-8605-5A5EB12F8519}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {666BEB39-BA0C-4577-A183-44596576C94F}
