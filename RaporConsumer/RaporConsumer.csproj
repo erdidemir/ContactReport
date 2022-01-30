@@ -6,11 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.95.4" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1000" />
     <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\EventBus.Messages\EventBus.Messages.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Rapor\" />
   </ItemGroup>
 </Project>

@@ -1,15 +1,20 @@
 ﻿using Contact.Application.Features.Commands.Rapors.AddRapor;
+using Contact.Application.Features.Queries.Contacts.GetKisiIletisimList;
 using Contact.Application.Features.Queries.Rapors.GetRapor;
 using Contact.Application.Features.Queries.Rapors.GetRaporList;
 using Contact.Application.Models.Rapors;
+using Contact.Domain.Enums.Contacts;
 using EventBus.Messages.Commons;
 using EventBus.Messages.Events;
+using EventBus.Messages.Models;
 using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RabbitMQ.Client;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -35,12 +40,29 @@ namespace Contact.Api.Controllers
 
             var raporId = await _mediator.Send(addRaporCommand);
 
+            var kisiIletisimList = await _mediator.Send(new GetKisiIletisimListQuery());
+            var konumList = kisiIletisimList.Where(p => p.BilgiTipId == (int)BilgiTipEnum.Konum).Select(p => p.Deger).Distinct();
+            var konumModelList = new List<KonumModel>();
+
+            foreach (var item in konumList)
+            {
+                var KisiList = kisiIletisimList.Where(p => p.BilgiTipId == (int)BilgiTipEnum.Konum && p.Deger == item).Select(p => p.KisiId).ToList();
+
+                KonumModel konumModel = new KonumModel();
+
+                konumModel.Konum = item;
+                konumModel.KisiSayisi = KisiList.Count();
+                konumModel.TelefonNumarasiSayisi = kisiIletisimList.Where(p => KisiList.Contains(p.KisiId) && p.BilgiTipId == (int)BilgiTipEnum.TelefonNumarasi).Count();
+
+                konumModelList.Add(konumModel);
+            }
+
+
             // send create event to rabbitmq
             RaporCreateEvent eventMessage = new RaporCreateEvent();
             eventMessage.RaporId = raporId;
-            eventMessage.KonumList = new System.Collections.Generic.List<string> { "Ankara" };
-            eventMessage.KisiSayisi = 10;
-            eventMessage.TelefonNumarasiSayisi = 50;
+            eventMessage.KonumModelList = konumModelList;
+
 
             var factory = new ConnectionFactory()
             {
@@ -74,6 +96,8 @@ namespace Contact.Api.Controllers
 
                 return Ok();
             }
+
+            return Ok();
         }
 
         [HttpGet]
