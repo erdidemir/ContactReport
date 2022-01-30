@@ -42,8 +42,6 @@ namespace Contact.Api.Controllers
 
             var kisiIletisimList = await _mediator.Send(new GetKisiIletisimListQuery());
             var konumList = kisiIletisimList.Where(p => p.BilgiTipId == (int)BilgiTipEnum.Konum).Select(p => p.Deger).Distinct();
-
-
             var konumModelList = new List<KonumModel>();
 
             foreach (var item in konumList)

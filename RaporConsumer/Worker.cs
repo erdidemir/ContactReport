@@ -1,12 +1,17 @@
 using EventBus.Messages.Commons;
+using EventBus.Messages.Events;
+using EventBus.Messages.Models;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using RaporConsumer.Exports;
+using RaporConsumer.MesageBroker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,7 +25,7 @@ namespace RaporConsumer
 
         public Worker()
         {
-           
+
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -40,6 +45,21 @@ namespace RaporConsumer
                     var jsonString = Encoding.UTF8.GetString(body);
 
                     Console.WriteLine($"Json receievd as {jsonString}");
+
+                    var raporCreateModel = JsonSerializer.Deserialize<RaporCreateEvent>(jsonString);
+
+                    //foreach (var konumItem in raporCreateModel.KonumModelList)
+                    //{
+                    //    Console.WriteLine(konumItem.Konum);
+                    //}
+
+                    var path = GenerateExcel.ReportExcel(raporCreateModel.RaporId, raporCreateModel.KonumModelList);
+
+                    RaporUpdateEvent raporUpdateEvent = new RaporUpdateEvent();
+                    raporUpdateEvent.RaporId = raporCreateModel.RaporId;
+                    raporUpdateEvent.RaporUrl = path;
+
+                    Message.SendMesage(raporUpdateEvent);
 
                     Console.Read();
                 };

@@ -12,15 +12,6 @@ namespace Contact.Api.EventBusConsumer
 {
     public class RaporUpdateConsumer : IConsumer<RaporUpdateEvent>
     {
-        //private readonly IMediator _mediator;
-        //private readonly IMapper _mapper;
-
-        //public RaporUpdateConsumer(IMediator mediator, IMapper mapper)
-        //{
-        //    _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-        //    _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        //}
-
         private readonly IRaporRepository _raporRepository;
 
         public RaporUpdateConsumer(IRaporRepository raporRepository)
