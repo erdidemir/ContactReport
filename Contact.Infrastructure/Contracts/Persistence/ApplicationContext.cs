@@ -22,18 +22,18 @@ namespace Contact.Infrastructure.Contracts.Persistence
 
         //public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         //{
-            //foreach (var entry in ChangeTracker.Entries<BaseEntity>())
-            //{
-            //    switch (entry.State)
-            //    {
-            //        case EntityState.Added:
-            //            entry.Entity.CreatedDate = DateTime.Now;
-            //            break;
-            //        case EntityState.Modified:
-            //            entry.Entity.LastModifiedDate = DateTime.Now;
-            //            break;
-            //    }
-            //}
+        //foreach (var entry in ChangeTracker.Entries<BaseEntity>())
+        //{
+        //    switch (entry.State)
+        //    {
+        //        case EntityState.Added:
+        //            entry.Entity.CreatedDate = DateTime.Now;
+        //            break;
+        //        case EntityState.Modified:
+        //            entry.Entity.LastModifiedDate = DateTime.Now;
+        //            break;
+        //    }
+        //}
         //    return base.SaveChangesAsync(cancellationToken);
         //}
 
@@ -41,15 +41,15 @@ namespace Contact.Infrastructure.Contracts.Persistence
         {
             #region Contacts
 
-            modelBuilder.ApplyConfiguration(new KisiConfiguration());
-            modelBuilder.ApplyConfiguration(new BilgiTipConfiguration());
-            modelBuilder.ApplyConfiguration(new KisiIletisimConfiguration());
+            modelBuilder.ApplyConfiguration(new Contact.Domain.Configurations.Contacts.KisiConfiguration());
+            modelBuilder.ApplyConfiguration(new Contact.Domain.Configurations.Contacts.BilgiTipConfiguration());
+            modelBuilder.ApplyConfiguration(new Contact.Domain.Configurations.Contacts.KisiIletisimConfiguration());
 
             #endregion
 
             #region Rapors
 
-            modelBuilder.ApplyConfiguration(new RaporConfiguration());
+            modelBuilder.ApplyConfiguration(new Contact.Domain.Configurations.Rapors.RaporConfiguration());
 
             #endregion
 
