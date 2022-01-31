@@ -41,8 +41,6 @@ namespace Kisiler.UnitTest.Kisiler.Queries
             var result = await handler.Handle(new GetKisiListQuery(), CancellationToken.None);
 
             result.ShouldBeOfType<List<KisiModel>>();
-
-            //result.Count.ShouldBe(3);
         }
     }
 }

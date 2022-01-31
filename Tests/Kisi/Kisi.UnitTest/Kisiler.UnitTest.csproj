@@ -30,8 +30,4 @@
     <ProjectReference Include="..\..\..\Contact.Domain\Contact.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Kisiler\Commands\" />
-  </ItemGroup>
-
 </Project>
