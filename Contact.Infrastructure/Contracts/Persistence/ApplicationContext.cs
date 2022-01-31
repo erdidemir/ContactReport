@@ -1,4 +1,5 @@
-﻿using Contact.Domain.Configurations.Contacts;
+﻿using Contact.Application.Contracts.Persistence.Repositories.Commons;
+using Contact.Domain.Configurations.Contacts;
 using Contact.Domain.Configurations.Rapors;
 using Contact.Domain.Entities.Contacts;
 using Contact.Domain.Entities.Rapors;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Contact.Infrastructure.Contracts.Persistence
 {
-    public class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext, IApplicationContext
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
@@ -75,6 +76,11 @@ namespace Contact.Infrastructure.Contracts.Persistence
         public DbSet<Rapor> Rapor { get; set; }
 
         #endregion
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
 
     }
 }

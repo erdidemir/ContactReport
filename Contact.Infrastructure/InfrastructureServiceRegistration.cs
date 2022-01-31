@@ -24,6 +24,8 @@ namespace Contact.Infrastructure
             services.AddDbContext<ApplicationContext>(options =>
                options.UseNpgsql(configuration.GetConnectionString("DefaultConnectionString")));
 
+            services.AddScoped<IApplicationContext>(provider => provider.GetService<ApplicationContext>());
+
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
 
             #region Contracts
